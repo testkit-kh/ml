@@ -1,0 +1,13 @@
+# Базовый слой: сервис + правиловый бэйзлайн. Ставится всегда.
+# Здесь намеренно нет torch: этот набор собирается за десятки секунд, и
+# на нём одном сервис уже поднимается и отвечает.
+fastapi[standard]==0.115.*
+uvicorn[standard]==0.34.*
+pydantic==2.*
+pydantic-settings==2.*
+python-multipart==0.0.*
+numpy==2.*
+pillow==11.*
+scipy==1.*
+scikit-image==0.26.*
+structlog==25.*

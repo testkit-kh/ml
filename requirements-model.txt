@@ -1,0 +1,18 @@
+# Слой партнёрской модели. Ставится поверх requirements.txt и только для
+# MODEL_BACKEND=segformer.
+#
+# torch тянется из CPU-индекса PyTorch: обычное `pip install torch` притащит
+# CUDA-колесо на два с лишним гигабайта, которое на сервере без видеокарты
+# не нужно. На GPU-хосте эту строку меняют на нужный cuXXX-индекс.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.*
+#
+# transformers держится на ветке 4.x осознанно. В 5.x переименованы внутренние
+# модули SegFormer (`segformer.encoder.patch_embeddings.0` -> `stages.0...`,
+# attention разложен на q/k/v-проекции), и опубликованный `model.pt` «Чистого
+# берега» под новые имена не встаёт: `load_state_dict` падает на каждом ключе.
+# Обновлять только вместе с переносом весов на новую схему имён.
+transformers==4.46.*
+#
+# torchvision не нужен: препроцессинг (ресайз + нормализация ImageNet) сделан
+# в numpy, а `SegformerImageProcessor` в сервисе не используется.

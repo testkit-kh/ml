@@ -1,0 +1,16 @@
+model.pt
+*.pt
+*.part
+testdata/frames/
+testdata/truth/
+testdata/real/
+testdata/manifest.json
+metrics.json
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+.venv-gpu/
+.env
+tilecache/

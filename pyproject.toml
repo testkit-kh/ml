@@ -1,0 +1,16 @@
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "scripts"]
+filterwarnings = [
+    # kmeans2 ворчит на кадре из одного цвета (пустой кластер) — это штатный
+    # случай «на снимке ничего нет», и он покрыт тестом.
+    "ignore:One of the clusters is empty:UserWarning",
+    "ignore:invalid value encountered in divide:RuntimeWarning",
+]

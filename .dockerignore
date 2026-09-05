@@ -1,0 +1,12 @@
+# Веса и тестовые кадры в образ не едут: 110 МБ весов приезжают в volume при
+# первом старте, тестовые данные генерируются скриптом.
+model.pt
+*.pt
+testdata/
+tests/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.pyc
+.venv/
+.env
